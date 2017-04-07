@@ -1,4 +1,4 @@
-.PHONY: lint docs dom history html http isolate jsonp most-run run rxjs-run native-screen native-toast
+.PHONY: lint docs dom history html http isolate jsonp most-run run rxjs-run native-keyboard native-screen native-toast
 
 BINDIR=node_modules/.bin
 TSLINT=$(BINDIR)/tslint
@@ -203,6 +203,8 @@ isolate :
 jsonp :
 	@:
 most-run :
+	@:
+native-keyboard:
 	@:
 native-screen:
 	@:
