@@ -38,9 +38,10 @@ setup :
 	@echo "(root): yarn install"
 	@yarn install
 	@echo ""
-	@while read d ; do \
+	@rootDir=$$(pwd) ; \
+	while read d ; do \
 		echo "$$d: yarn install" ;\
-		cd $$d ; yarn install ; cd .. ;\
+		cd "./$$d" ; yarn install ; cd $$rootDir ;\
 		echo "" ;\
 	done < .scripts/RELEASABLE_PACKAGES
 	@make lib
@@ -76,6 +77,7 @@ lib :
 	else \
 		rm -rf $(ARG)/lib/ ;\
 		mkdir -p $(ARG)/lib ;\
+		grep 'postinstall' $(ARG)/package.json >/dev/null && cd $(ARG) && npm run postinstall ;\
 		$(TSC) --project $(ARG) --module commonjs --outDir $(ARG)/lib ;\
 		$(TSC) --project $(ARG) --module es6 --outDir $(ARG)/lib/es6 ;\
 		echo "✓ Compiled TypeScript to lib\n" ;\

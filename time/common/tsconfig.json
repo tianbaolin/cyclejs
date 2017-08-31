@@ -1,5 +1,5 @@
 {
-  "extends": "../tsconfig.common.json",
+  "extends": "../../tsconfig.common.json",
   "compilerOptions": {
     "lib": [
       "dom",
@@ -11,8 +11,6 @@
     ]
   },
   "files": [
-    "index.ts",
-    "most.ts",
-    "rxjs.ts"
+    "src/index.ts"
   ]
 }
